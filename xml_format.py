@@ -9,7 +9,7 @@ all_words = []
 pop_words = []
 
 chanel_node = root.find("channel")
-items_list = root.findall("channel/item/title")
+items_list = root.findall("channel/item/description")
 
 for title in items_list:
     news = title.text.split()
