@@ -9,20 +9,24 @@ all_words = []
 pop_words = []
 
 chanel_node = root.find("channel")
-items_list = root.findall("channel/item/description")
+descr_list = root.findall("channel/item/description")
 
-for title in items_list:
-    news = title.text.split()
+for descr in descr_list:
+    news = descr.text.lower()
+    news = descr.text.split()
     all_words.extend(news)
-    for word in all_words:
-        if len(word) > 6:
-            pop_words.append(word)
+
+for word in all_words:
+    if len(word) > 6:
+        pop_words.append(word)
 
 stat = Counter(pop_words)
 sort_stat = sorted(((say, number) for say, number in stat.items()), key=lambda pair: pair[1], reverse=True)
 print("Топ 10 слов в новостной ленте: ")
 for i in range (10):
     print(sort_stat[i])
+
+
 
 
 
